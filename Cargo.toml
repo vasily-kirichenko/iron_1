@@ -1,0 +1,12 @@
+[package]
+name = "iron_1"
+version = "0.1.0"
+authors = ["Vasily Kirichenko <vaskir@gmail.com>"]
+
+[dependencies]
+iron = "*"
+time = "*"
+serde = "*"
+serde_derive = "*"
+serde_json = "*"
+router = "*"
