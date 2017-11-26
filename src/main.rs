@@ -41,9 +41,17 @@ struct Good {
 fn main() {
     let router =
         router! {
+            options: options "/" => options_handler,
             good: get "/good" => good_handler,
             error: get "/error" => error_handler
         };
+
+    fn options_handler(_: &mut Request) -> IronResult<Response> {
+        let mut resp = Response::new();
+        resp.status = Some(status::Ok);
+        resp.headers.set(iron::headers::AccessControlAllowOrigin::Any);
+        Ok(resp)
+    }
 
     fn good_handler(_: &mut Request) -> IronResult<Response> {
         let good = Good { message: "oops!".to_string() };
